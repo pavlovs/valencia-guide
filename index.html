@@ -112,6 +112,42 @@ body {
 }
 .pill-nearme { display: flex; align-items: center; gap: 4px; }
 
+/* OCCASION PILLS — second filter row */
+.occasion-pills {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-top: 8px;
+  padding-bottom: 2px;
+  mask-image: linear-gradient(to right, black calc(100% - 32px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 32px), transparent 100%);
+}
+.occasion-pills::-webkit-scrollbar { display: none; }
+.occasion-pill {
+  flex-shrink: 0;
+  padding: 5px 12px;
+  border-radius: 16px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1.5px dashed var(--text-tertiary);
+  background: transparent;
+  color: var(--text-secondary);
+  transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.occasion-pill:hover { border-color: var(--secondary); color: var(--text); }
+.occasion-pill.active {
+  background: var(--secondary);
+  color: #fff;
+  border-color: var(--secondary);
+  border-style: solid;
+}
+
 /* VENUE DIRECTORY */
 .venue-directory { padding-top: 8px; }
 
@@ -459,7 +495,15 @@ body {
       <button class="pill" data-filter="sweet" type="button">Sweet</button>
       <button class="pill" data-filter="beach" type="button">Beach</button>
       <button class="pill" data-filter="shop" type="button">Shop</button>
+      <button class="pill" data-filter="sights" type="button">Sights</button>
       <button class="pill pill-nearme" data-filter="nearme" type="button">&#x1F4CD; Near me</button>
+    </div>
+    <div class="occasion-pills">
+      <button class="occasion-pill" data-occasion="tonight" type="button">Tonight</button>
+      <button class="occasion-pill" data-occasion="lunch" type="button">Lunch</button>
+      <button class="occasion-pill" data-occasion="date" type="button">Date night</button>
+      <button class="occasion-pill" data-occasion="latedrink" type="button">Late drink</button>
+      <button class="occasion-pill" data-occasion="brunch" type="button">Brunch</button>
     </div>
   </div>
 
@@ -471,9 +515,9 @@ body {
 
     <!-- RUZAFA -->
     <details class="neighborhood" open data-hood="ruzafa">
-      <summary>Ruzafa <span class="hood-count">20</span></summary>
+      <summary>Ruzafa <span class="hood-count">18</span></summary>
 
-      <div class="v" data-tags="food" data-lat="39.4598" data-lng="-0.3722">
+      <div class="v" data-tags="food" data-lat="39.4619" data-lng="-0.3695" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Acapulco+Bar+Valencia+Ruzafa" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/acapulcobar_valencia" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -484,7 +528,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4592" data-lng="-0.3718">
+      <div class="v" data-tags="food" data-lat="39.4637" data-lng="-0.3700" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Canalla+Bistro+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/canallabistro" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -495,7 +539,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4601" data-lng="-0.3730">
+      <div class="v" data-tags="food" data-lat="39.4605" data-lng="-0.3738" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Alquimista+pasta+Ruzafa+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/alquimistangram" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -506,7 +550,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4595" data-lng="-0.3735">
+      <div class="v" data-tags="food" data-lat="39.4601" data-lng="-0.3742" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Masusa+restaurante+Ruzafa+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -516,7 +560,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food,wine" data-lat="39.4590" data-lng="-0.3720">
+      <div class="v" data-tags="food,wine" data-lat="39.4603" data-lng="-0.3746" data-occasion="tonight,latedrink">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=La+Cooperativa+del+Mar+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -526,7 +570,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="wine" data-lat="39.4605" data-lng="-0.3715">
+      <div class="v" data-tags="wine" data-lat="39.4621" data-lng="-0.3698" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=ViveVino+wine+bar+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/vivevino_winebar" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -537,7 +581,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="music" data-lat="39.4588" data-lng="-0.3728">
+      <div class="v" data-tags="music" data-lat="39.4612" data-lng="-0.3676" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Killing+Time+Ruzafa+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/killingtime_ruzafa" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -548,7 +592,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="music" data-lat="39.4603" data-lng="-0.3710">
+      <div class="v" data-tags="music" data-lat="39.4638" data-lng="-0.3698" data-occasion="tonight,latedrink">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Resume+Valencia+vinyl" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/resumevalencia" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -559,7 +603,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="sweet" data-lat="39.4597" data-lng="-0.3740">
+      <div class="v" data-tags="sweet" data-lat="39.4613" data-lng="-0.3730" data-occasion="brunch,lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Horno+San+Bartolome+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -569,7 +613,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4600" data-lng="-0.3725">
+      <div class="v" data-tags="food" data-lat="39.4622" data-lng="-0.3738" data-occasion="lunch,brunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Di+Fredo+restaurante+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -579,7 +623,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4593" data-lng="-0.3732">
+      <div class="v" data-tags="food" data-lat="39.4603" data-lng="-0.3738" data-occasion="brunch,lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=La+Cantina+de+Ruzafa+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -589,7 +633,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="bars" data-lat="39.4596" data-lng="-0.3712">
+      <div class="v" data-tags="bars" data-lat="39.4631" data-lng="-0.3735" data-occasion="tonight,latedrink,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=The+Green+Book+cocktail+bar+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -599,18 +643,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4602" data-lng="-0.3738">
-        <div class="v-icons">
-          <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Forastera+restaurante+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
-          <a class="v-icon" href="https://instagram.com/forastera_restaurant" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
-        </div>
-        <div class="v-top"><div class="v-name">Forastera</div><div class="v-price">&euro;&euro;&euro;</div></div>
-        <div class="v-desc">Bib Gourmand. 15 EUR lunch or 25–55 tasting. Worth booking.</div>
-        <div class="v-meta">Closed Tue, Wed &middot; 21:00–23:00</div>
-        <div class="v-dist"></div>
-      </div>
-
-      <div class="v" data-tags="food" data-lat="39.4591" data-lng="-0.3716">
+<div class="v" data-tags="food" data-lat="39.4637" data-lng="-0.3660" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Saiti+restaurante+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/saitiexperience" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -621,7 +654,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4608" data-lng="-0.3720">
+      <div class="v" data-tags="food" data-lat="39.4680" data-lng="-0.3671" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Flama+restaurante+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/restauranteflama" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -632,7 +665,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="wine" data-lat="39.4594" data-lng="-0.3708">
+      <div class="v" data-tags="wine" data-lat="39.4661" data-lng="-0.3660" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Terra+a+Vins+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -642,7 +675,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="bars" data-lat="39.4612" data-lng="-0.3728">
+      <div class="v" data-tags="bars" data-lat="39.4655" data-lng="-0.3675" data-occasion="tonight,latedrink,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Apotheke+bar+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -652,7 +685,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="music" data-lat="39.4586" data-lng="-0.3722">
+      <div class="v" data-tags="music" data-lat="39.4621" data-lng="-0.3727" data-occasion="tonight,latedrink">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Club+Gordo+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/clubgordo" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -663,7 +696,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4599" data-lng="-0.3714">
+      <div class="v" data-tags="food" data-lat="39.4616" data-lng="-0.3726" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Nozomi+Sushi+Bar+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/nozomisushibar" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -674,23 +707,13 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="sweet" data-lat="39.4600" data-lng="-0.3720">
-        <div class="v-icons">
-          <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Gelatica+Ice+Concept+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
-        </div>
-        <div class="v-top"><div class="v-name">Gelatica Ice Concept</div><div class="v-price">&euro;</div></div>
-        <div class="v-desc">Frozen tarts and pistachio everything. Dangerous.</div>
-        <div class="v-meta">Closed Mon, Tue &middot; til ~21:00</div>
-        <div class="v-dist"></div>
-      </div>
-
-    </details>
+</details>
 
     <!-- EL CARMEN -->
     <details class="neighborhood" open data-hood="el-carmen">
-      <summary>El Carmen <span class="hood-count">10</span></summary>
+      <summary>El Carmen <span class="hood-count">11</span></summary>
 
-      <div class="v" data-tags="wine" data-lat="39.4782" data-lng="-0.3808">
+      <div class="v" data-tags="wine" data-lat="39.4767" data-lng="-0.3772" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Borgia+Wine+Bar+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/borgiawinebar_vlc" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -701,7 +724,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="bars" data-lat="39.4778" data-lng="-0.3805">
+      <div class="v" data-tags="bars" data-lat="39.4771" data-lng="-0.3756" data-occasion="tonight,latedrink">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Cafe+de+las+Horas+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -711,7 +734,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4774" data-lng="-0.3802">
+      <div class="v" data-tags="food" data-lat="39.4759" data-lng="-0.3805" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=La+Pilareta+Bar+Pilar+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -721,7 +744,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="music" data-lat="39.4786" data-lng="-0.3815">
+      <div class="v" data-tags="music" data-lat="39.4783" data-lng="-0.3754" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Nekoza+Records+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -731,7 +754,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4780" data-lng="-0.3818">
+      <div class="v" data-tags="food" data-lat="39.4764" data-lng="-0.3739" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Taberna+La+Samorra+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -741,7 +764,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4776" data-lng="-0.3812">
+      <div class="v" data-tags="food" data-lat="39.4719" data-lng="-0.3717" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Ostras+Pedrin+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -751,7 +774,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="wine" data-lat="39.4784" data-lng="-0.3822">
+      <div class="v" data-tags="wine" data-lat="39.4754" data-lng="-0.3771" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Tinto+Fino+Ultramarino+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -761,7 +784,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4788" data-lng="-0.3798">
+      <div class="v" data-tags="food" data-lat="39.4791" data-lng="-0.3775" data-occasion="lunch,tonight">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Felix+Chaques+restaurante+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/felixchaquesrestaurant" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -772,7 +795,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4738" data-lng="-0.3785">
+      <div class="v" data-tags="food" data-lat="39.4735" data-lng="-0.3789" data-occasion="brunch,lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Central+Bar+Mercado+Central+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/centralbarvlc" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -783,7 +806,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4736" data-lng="-0.3782">
+      <div class="v" data-tags="food" data-lat="39.4749" data-lng="-0.3777" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Tasca+Angel+Mercado+Central+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -793,13 +816,25 @@ body {
         <div class="v-dist"></div>
       </div>
 
+
+      <div class="v" data-tags="food" data-lat="39.4749" data-lng="-0.3810" data-occasion="tonight,date">
+        <div class="v-icons">
+          <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Forastera+restaurante+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+          <a class="v-icon" href="https://instagram.com/forastera_restaurant" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
+        </div>
+        <div class="v-top"><div class="v-name">Forastera</div><div class="v-price">&euro;&euro;&euro;</div></div>
+        <div class="v-desc">Bib Gourmand. 15 EUR lunch or 25–55 tasting. Worth booking.</div>
+        <div class="v-meta">Closed Tue, Wed &middot; 21:00–23:00</div>
+        <div class="v-dist"></div>
+      </div>
+
     </details>
 
     <!-- EXTRAMURS -->
     <details class="neighborhood" open data-hood="extramurs">
       <summary>Extramurs <span class="hood-count">4</span></summary>
 
-      <div class="v" data-tags="wine,food" data-lat="39.4718" data-lng="-0.3845">
+      <div class="v" data-tags="wine,food" data-lat="39.4547" data-lng="-0.3907" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Barbaric+wine+bar+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/barbaric.ptx" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -810,7 +845,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="music" data-lat="39.4722" data-lng="-0.3855">
+      <div class="v" data-tags="music" data-lat="39.4670" data-lng="-0.3827" data-occasion="tonight,latedrink">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=HIFI+Valencia+listening+bar" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/hifivalencia" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -821,7 +856,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="wine" data-lat="39.4715" data-lng="-0.3840">
+      <div class="v" data-tags="wine" data-lat="39.4766" data-lng="-0.3853" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Defecto+bar+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/defectobar" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -832,7 +867,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4725" data-lng="-0.3848">
+      <div class="v" data-tags="food" data-lat="39.4744" data-lng="-0.3951" data-occasion="lunch,tonight">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Bar+Ricardo+Valencia+tapas" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -846,9 +881,9 @@ body {
 
     <!-- CABANYAL -->
     <details class="neighborhood" open data-hood="cabanyal">
-      <summary>Cabanyal <span class="hood-count">4</span></summary>
+      <summary>Cabanyal <span class="hood-count">5</span></summary>
 
-      <div class="v" data-tags="food" data-lat="39.4688" data-lng="-0.3475">
+      <div class="v" data-tags="food" data-lat="39.4677" data-lng="-0.3302" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Augusta+restaurante+Cabanyal+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/augustavalencia2023" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -859,7 +894,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4682" data-lng="-0.3470">
+      <div class="v" data-tags="food" data-lat="39.4695" data-lng="-0.3251" data-occasion="lunch,tonight">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=La+Fabrica+de+Hielo+Valencia+Cabanyal" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/lafabricadehielo_" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -870,7 +905,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food,wine" data-lat="39.4690" data-lng="-0.3485">
+      <div class="v" data-tags="food,wine" data-lat="39.4710" data-lng="-0.3298" data-occasion="lunch,tonight">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Casa+Montana+bodega+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -880,7 +915,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4686" data-lng="-0.3478">
+      <div class="v" data-tags="food" data-lat="39.4659" data-lng="-0.3333" data-occasion="lunch,tonight">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Anyora+bar+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -890,13 +925,24 @@ body {
         <div class="v-dist"></div>
       </div>
 
+
+      <div class="v" data-tags="sweet" data-lat="39.4587" data-lng="-0.3266" data-occasion="lunch,brunch">
+        <div class="v-icons">
+          <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Gelatica+Ice+Concept+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+        </div>
+        <div class="v-top"><div class="v-name">Gelatica Ice Concept</div><div class="v-price">&euro;</div></div>
+        <div class="v-desc">Frozen tarts and pistachio everything. Dangerous.</div>
+        <div class="v-meta">Closed Mon, Tue &middot; til ~21:00</div>
+        <div class="v-dist"></div>
+      </div>
+
     </details>
 
     <!-- OTHER -->
     <details class="neighborhood" open data-hood="other">
       <summary>Other <span class="hood-count">6</span></summary>
 
-      <div class="v" data-tags="food" data-lat="39.4650" data-lng="-0.3760">
+      <div class="v" data-tags="food" data-lat="39.4705" data-lng="-0.3574" data-occasion="lunch,tonight">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Bar+Tonyina+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/bartonyina" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -907,7 +953,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="music" data-lat="39.4550" data-lng="-0.3650">
+      <div class="v" data-tags="music" data-lat="39.4637" data-lng="-0.3760" data-occasion="tonight,latedrink">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Oven+Club+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/cluboven" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
@@ -918,7 +964,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="music" data-lat="39.4670" data-lng="-0.3780">
+      <div class="v" data-tags="music" data-lat="39.4651" data-lng="-0.3766" data-occasion="tonight,latedrink">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Splendini+Bar+Discos+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -928,7 +974,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="music" data-lat="39.4700" data-lng="-0.3790">
+      <div class="v" data-tags="music" data-lat="39.4603" data-lng="-0.3757" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Ultrasound+Music+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -938,7 +984,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="music" data-lat="39.4830" data-lng="-0.3620">
+      <div class="v" data-tags="music" data-lat="39.4811" data-lng="-0.3592" data-occasion="tonight,latedrink">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Himen+discos+Benimaclet+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -948,7 +994,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.4730" data-lng="-0.3720">
+      <div class="v" data-tags="food" data-lat="39.4766" data-lng="-0.3667" data-occasion="brunch,lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Kiosco+La+Pergola+Valencia+Alameda" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -964,7 +1010,7 @@ body {
     <details class="neighborhood" open data-hood="day-trips">
       <summary>Day Trips <span class="hood-count">5</span></summary>
 
-      <div class="v" data-tags="food" data-lat="39.4650" data-lng="-0.3420">
+      <div class="v" data-tags="food" data-lat="39.4823" data-lng="-0.3258" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Casa+Carmela+restaurante+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -974,7 +1020,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.3500" data-lng="-0.3500">
+      <div class="v" data-tags="food" data-lat="39.3085" data-lng="-0.3177" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Restaurante+Bon+Aire+El+Palmar+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -984,17 +1030,17 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="food" data-lat="39.3520" data-lng="-0.3480">
+      <div class="v" data-tags="food" data-lat="39.4765" data-lng="-0.3969" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Restaurante+Levante+Valencia+paella" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
         <div class="v-top"><div class="v-name">Restaurante Levante</div><div class="v-price">&euro;&euro;</div></div>
-        <div class="v-desc">50+ years. Wooden spoon — eat from the pan.</div>
-        <div class="v-meta">Closed Tue &middot; 13:00–16:00</div>
+        <div class="v-desc">Wood-fired paella. Campanar district — not the beach, but the rice is the point. Book ahead.</div>
+        <div class="v-meta">Closed Mon &middot; 13:30–16:00</div>
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="sweet" data-lat="39.5010" data-lng="-0.3580">
+      <div class="v" data-tags="sweet" data-lat="39.4954" data-lng="-0.3548" data-occasion="lunch,brunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Horchateria+Daniel+Alboraya+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -1004,7 +1050,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="sweet" data-lat="39.5020" data-lng="-0.3570">
+      <div class="v" data-tags="sweet" data-lat="39.5065" data-lng="-0.3471" data-occasion="lunch,brunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Horchateria+Vida+Alboraya" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -1020,7 +1066,7 @@ body {
     <details class="neighborhood" open data-hood="rooftops">
       <summary>Rooftops <span class="hood-count">3</span></summary>
 
-      <div class="v" data-tags="bars" data-lat="39.4680" data-lng="-0.3580">
+      <div class="v" data-tags="bars" data-lat="39.4709" data-lng="-0.3762" data-occasion="tonight,latedrink,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Atenea+Sky+Bar+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -1030,7 +1076,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="bars" data-lat="39.4640" data-lng="-0.3770">
+      <div class="v" data-tags="bars" data-lat="39.4609" data-lng="-0.3527" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=270+Terrace+Barcelo+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -1040,7 +1086,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="bars" data-lat="39.4790" data-lng="-0.3808">
+      <div class="v" data-tags="bars" data-lat="39.4801" data-lng="-0.3774" data-occasion="tonight,date">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Blanq+Carmen+Hotel+Valencia+terraza" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -1056,7 +1102,7 @@ body {
     <details class="neighborhood" open data-hood="coffee">
       <summary>Breakfast &amp; Coffee <span class="hood-count">4</span></summary>
 
-      <div class="v" data-tags="coffee" data-lat="39.4595" data-lng="-0.3718">
+      <div class="v" data-tags="coffee" data-lat="39.4619" data-lng="-0.3758" data-occasion="brunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Bluebell+Coffee+Roasters+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -1066,7 +1112,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="coffee" data-lat="39.4590" data-lng="-0.3725">
+      <div class="v" data-tags="coffee" data-lat="39.4717" data-lng="-0.3754" data-occasion="brunch,lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Federal+Cafe+Ruzafa+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -1076,7 +1122,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="coffee" data-lat="39.4597" data-lng="-0.3730">
+      <div class="v" data-tags="coffee" data-lat="39.4604" data-lng="-0.3762" data-occasion="brunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Dulce+de+Leche+Ruzafa+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -1086,7 +1132,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="coffee" data-lat="39.4605" data-lng="-0.3712">
+      <div class="v" data-tags="coffee" data-lat="39.4620" data-lng="-0.3669" data-occasion="brunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Fumi+Specialty+Coffee+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -1102,7 +1148,7 @@ body {
     <details class="neighborhood" open data-hood="shopping">
       <summary>Shopping <span class="hood-count">12</span></summary>
 
-      <div class="v" data-tags="shop" data-lat="39.4610" data-lng="-0.3730">
+      <div class="v" data-tags="shop" data-lat="39.4617" data-lng="-0.3769" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Gnomo+Calle+Cuba+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/gnomo.eu" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -1113,7 +1159,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="shop" data-lat="39.4755" data-lng="-0.3775">
+      <div class="v" data-tags="shop" data-lat="39.4768" data-lng="-0.3773" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Atypical+Valencia+Calle+Caballeros" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/atypicalvalencia" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -1124,7 +1170,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="shop" data-lat="39.4760" data-lng="-0.3790">
+      <div class="v" data-tags="shop" data-lat="39.4775" data-lng="-0.3798" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Santo+Spirito+Vintage+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/santospiritovintage" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -1135,7 +1181,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="shop" data-lat="39.4748" data-lng="-0.3790">
+      <div class="v" data-tags="shop" data-lat="39.4736" data-lng="-0.3770" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Kubelik+shop+Valencia+El+Carmen" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/kubelikshop" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -1146,7 +1192,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="shop" data-lat="39.4740" data-lng="-0.3770">
+      <div class="v" data-tags="shop" data-lat="39.4723" data-lng="-0.3728" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Ona+Negra+shoes+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/onanegra_valencia" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -1157,7 +1203,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="shop" data-lat="39.4750" data-lng="-0.3780">
+      <div class="v" data-tags="shop" data-lat="39.4741" data-lng="-0.3773" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=La+Senora+Henderson+Valencia+vintage" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/la_sra_henderson" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -1168,7 +1214,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="shop" data-lat="39.4608" data-lng="-0.3715">
+      <div class="v" data-tags="shop" data-lat="39.4614" data-lng="-0.3754" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Kamille+Vintage+Valencia+Ruzafa" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/kamillevintage" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -1179,7 +1225,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="shop" data-lat="39.4605" data-lng="-0.3720">
+      <div class="v" data-tags="shop" data-lat="39.4613" data-lng="-0.3760" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Madame+Mim+vintage+Valencia+Ruzafa" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/madame.mim.shop" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -1190,7 +1236,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="shop" data-lat="39.4618" data-lng="-0.3725">
+      <div class="v" data-tags="shop" data-lat="39.4632" data-lng="-0.3748" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Selecto+Vintage+Ruzafa+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/selectovintage_" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -1201,7 +1247,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="shop" data-lat="39.4615" data-lng="-0.3740">
+      <div class="v" data-tags="shop" data-lat="39.4634" data-lng="-0.3746" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Flamingos+Vintage+Kilo+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/flamingosvalencia" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -1212,7 +1258,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="shop" data-lat="39.4612" data-lng="-0.3732">
+      <div class="v" data-tags="shop" data-lat="39.4638" data-lng="-0.3749" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Novedades+Casino+Valencia+Ruzafa" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/novedades_casino" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -1223,7 +1269,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="shop" data-lat="39.4610" data-lng="-0.3728">
+      <div class="v" data-tags="shop" data-lat="39.4606" data-lng="-0.3688" data-occasion="lunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Misc+ceramics+Ruzafa+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
           <a class="v-icon" href="https://instagram.com/misc.vlc" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -1239,7 +1285,7 @@ body {
     <details class="neighborhood" open data-hood="beaches">
       <summary>Beaches <span class="hood-count">3</span></summary>
 
-      <div class="v" data-tags="beach" data-lat="39.4820" data-lng="-0.3310">
+      <div class="v" data-tags="beach" data-lat="39.4895" data-lng="-0.3241" data-occasion="lunch,brunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Playa+de+la+Patacona+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -1249,7 +1295,7 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="beach" data-lat="39.4720" data-lng="-0.3360">
+      <div class="v" data-tags="beach" data-lat="39.4794" data-lng="-0.3237" data-occasion="lunch,brunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Playa+de+la+Malvarrosa+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
@@ -1259,13 +1305,120 @@ body {
         <div class="v-dist"></div>
       </div>
 
-      <div class="v" data-tags="beach" data-lat="39.4660" data-lng="-0.3380">
+      <div class="v" data-tags="beach" data-lat="39.4689" data-lng="-0.3228" data-occasion="lunch,brunch">
         <div class="v-icons">
           <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Playa+de+Las+Arenas+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
         </div>
         <div class="v-top"><div class="v-name">Las Arenas</div><div class="v-price">—</div></div>
         <div class="v-desc">Closest to center. Most crowded.</div>
         <div class="v-meta">Closest to city center</div>
+        <div class="v-dist"></div>
+      </div>
+
+    </details>
+
+  
+    <!-- SIGHTS -->
+    <details class="neighborhood" open data-hood="sights">
+      <summary>Sightseeing <span class="hood-count">10</span></summary>
+
+      <div class="v" data-tags="sights" data-lat="39.4538" data-lng="-0.3525" data-occasion="lunch,tonight,date">
+        <div class="v-icons">
+          <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Ciudad+de+las+Artes+y+las+Ciencias+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+        </div>
+        <div class="v-top"><div class="v-name">Ciutat de les Arts i les Ciencies</div><div class="v-price">Free (exterior)</div></div>
+        <div class="v-desc">Calatrava&rsquo;s sci-fi complex. Skip the overpriced aquarium &mdash; the architecture reads best for free from the reflecting pools at golden hour.</div>
+        <div class="v-meta">Exterior 24/7, best at sunset. Museums 10:00&ndash;18:00.</div>
+        <div class="v-dist"></div>
+      </div>
+
+      <div class="v" data-tags="sights" data-lat="39.4743" data-lng="-0.3789" data-occasion="lunch,brunch">
+        <div class="v-icons">
+          <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Lonja+de+la+Seda+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+        </div>
+        <div class="v-top"><div class="v-name">La Lonja de la Seda</div><div class="v-price">&euro;2 (free Sundays)</div></div>
+        <div class="v-desc">UNESCO silk exchange. The spiral columns in the main hall are genuinely stunning &mdash; worth 20 focused minutes.</div>
+        <div class="v-meta">Mon&ndash;Sat 10:00&ndash;19:00, Sun 10:00&ndash;14:00.</div>
+        <div class="v-dist"></div>
+      </div>
+
+      <div class="v" data-tags="sights" data-lat="39.4791" data-lng="-0.3764" data-occasion="lunch,brunch">
+        <div class="v-icons">
+          <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Torres+de+Serranos+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+        </div>
+        <div class="v-top"><div class="v-name">Torres de Serranos</div><div class="v-price">&euro;2 (free Sundays)</div></div>
+        <div class="v-desc">14th-century city gate with the best rooftop view of the old town and Turia gardens. Cheap, quick, rewarding.</div>
+        <div class="v-meta">Mon&ndash;Sat 10:00&ndash;19:00, Sun 10:00&ndash;14:00.</div>
+        <div class="v-dist"></div>
+      </div>
+
+      <div class="v" data-tags="sights" data-lat="39.4710" data-lng="-0.3732" data-occasion="lunch,date">
+        <div class="v-icons">
+          <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Palacio+Marques+Dos+Aguas+Museo+Ceramica+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+        </div>
+        <div class="v-top"><div class="v-name">Palacio del Marques de Dos Aguas</div><div class="v-price">&euro;3 (free Sat 16:00+ and Sun)</div></div>
+        <div class="v-desc">Rococo facade worth a detour, Picasso ceramics inside. Best &euro;3 museum in the city.</div>
+        <div class="v-meta">Tue&ndash;Sat 10:00&ndash;14:00 &amp; 16:00&ndash;20:00, Sun 10:00&ndash;14:00. Closed Mon.</div>
+        <div class="v-dist"></div>
+      </div>
+
+      <div class="v" data-tags="sights" data-lat="39.4657" data-lng="-0.3774" data-occasion="lunch,brunch">
+        <div class="v-icons">
+          <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Estacion+del+Norte+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+        </div>
+        <div class="v-top"><div class="v-name">Estacion del Norte</div><div class="v-price">Free</div></div>
+        <div class="v-desc">Working train station with Art Nouveau interiors &mdash; ceramic oranges, mosaic murals, carved wood. Walk in, look up, walk out. Two minutes.</div>
+        <div class="v-meta">Daily, it&rsquo;s a functioning station.</div>
+        <div class="v-dist"></div>
+      </div>
+
+      <div class="v" data-tags="sights" data-lat="39.4690" data-lng="-0.3270" data-occasion="lunch,brunch">
+        <div class="v-icons">
+          <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Carrer+de+la+Reina+Cabanyal+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+        </div>
+        <div class="v-top"><div class="v-name">El Cabanyal Walk</div><div class="v-price">Free</div></div>
+        <div class="v-desc">Former fishing village with Valencia&rsquo;s best ceramic tile facades. Focus on C/ de la Reina and C/ del Progr&eacute;s. Rapidly gentrifying, still raw.</div>
+        <div class="v-meta">Anytime. Morning light best for facades. Pair with beach.</div>
+        <div class="v-dist"></div>
+      </div>
+
+      <div class="v" data-tags="sights" data-lat="39.4792" data-lng="-0.3831" data-occasion="lunch,date">
+        <div class="v-icons">
+          <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=IVAM+Institut+Valencia+Art+Modern" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+        </div>
+        <div class="v-top"><div class="v-name">IVAM</div><div class="v-price">&euro;5 (free Sun and Wed 16&ndash;19h)</div></div>
+        <div class="v-desc">Spain&rsquo;s first modern art museum. Julio Gonz&aacute;lez ironwork is standout. Quality varies by temporary show &mdash; check before going.</div>
+        <div class="v-meta">Tue&ndash;Sun 10:00&ndash;19:00. Closed Mon.</div>
+        <div class="v-dist"></div>
+      </div>
+
+      <div class="v" data-tags="sights" data-lat="39.4858" data-lng="-0.3936" data-occasion="lunch,date">
+        <div class="v-icons">
+          <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Bombas+Gens+Centre+Art+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+        </div>
+        <div class="v-top"><div class="v-name">Bombas Gens</div><div class="v-price">&euro;10&ndash;19</div></div>
+        <div class="v-desc">Art Deco factory turned digital arts centre with immersive installations, medieval cellar and Civil War shelter underneath. Worth the trek.</div>
+        <div class="v-meta">Mon, Wed&ndash;Sun 10:00&ndash;21:00. Closed Tue.</div>
+        <div class="v-dist"></div>
+      </div>
+
+      <div class="v" data-tags="sights" data-lat="39.4692" data-lng="-0.3685" data-occasion="lunch,tonight,brunch,date">
+        <div class="v-icons">
+          <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Mercado+Colon+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+        </div>
+        <div class="v-top"><div class="v-name">Mercat de Colon</div><div class="v-price">Free</div></div>
+        <div class="v-desc">Art Nouveau iron-and-glass market, beautifully restored. Not a food market anymore &mdash; now an F&amp;B hall. Come for the architecture and horchata.</div>
+        <div class="v-meta">Daily from 07:30. Individual stall hours vary.</div>
+        <div class="v-dist"></div>
+      </div>
+
+      <div class="v" data-tags="sights" data-lat="39.4780" data-lng="-0.3720" data-occasion="lunch,tonight,date,brunch">
+        <div class="v-icons">
+          <a class="v-icon" href="https://www.google.com/maps/search/?api=1&query=Jardines+del+Turia+Valencia" target="_blank" rel="noopener" aria-label="Google Maps" title="Maps"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+        </div>
+        <div class="v-top"><div class="v-name">Jardines del Turia</div><div class="v-price">Free</div></div>
+        <div class="v-desc">9km linear park in a drained riverbed. Rent a bike, ride from Cabecera to City of Arts. 18 bridges overhead. Never feels touristy.</div>
+        <div class="v-meta">24/7. Best late afternoon when locals are out.</div>
         <div class="v-dist"></div>
       </div>
 
@@ -1293,10 +1446,10 @@ body {
     <div class="guide-card">
       <div class="guide-card-title">Follow These</div>
       <ul>
-        <li><span class="guide-handle"><a href="https://instagram.com/valenciaeatguide" target="_blank" rel="noopener">@valenciaeatguide</a></span> — <span class="guide-desc">best food account for the city</span></li>
+        <li><span class="guide-handle"><a href="https://instagram.com/valencia_eats" target="_blank" rel="noopener">@valencia_eats</a></span> — <span class="guide-desc">local food recommendations</span></li>
         <li><span class="guide-handle"><a href="https://instagram.com/rfrancovalencia" target="_blank" rel="noopener">@rfrancovalencia</a></span> — <span class="guide-desc">wine bars, natural wine scene</span></li>
-        <li><span class="guide-handle"><a href="https://instagram.com/valenciasecreta" target="_blank" rel="noopener">@valenciasecreta</a></span> — <span class="guide-desc">local hidden gems, events</span></li>
-        <li><span class="guide-handle"><a href="https://instagram.com/larutanaranja" target="_blank" rel="noopener">@larutanaranja</a></span> — <span class="guide-desc">street food and markets</span></li>
+        <li><span class="guide-handle"><a href="https://instagram.com/valencia_secreta" target="_blank" rel="noopener">@valencia_secreta</a></span> — <span class="guide-desc">local hidden gems, events</span></li>
+        <li><span class="guide-handle"><a href="https://instagram.com/love_valencia" target="_blank" rel="noopener">@love_valencia</a></span> — <span class="guide-desc">Valencia lifestyle and food</span></li>
         <li><span class="guide-handle"><a href="https://instagram.com/gastronosfera" target="_blank" rel="noopener">@gastronosfera</a></span> — <span class="guide-desc">Spanish food culture (national, not VLC-specific but great)</span></li>
       </ul>
     </div>
@@ -1306,8 +1459,8 @@ body {
       <ul>
         <li><strong><a href="https://www.reddit.com/r/valencia/" target="_blank" rel="noopener">r/valencia</a></strong> — search "restaurant recommendations" for recent threads</li>
         <li><strong><a href="https://www.theinfatuation.com/valencia" target="_blank" rel="noopener">The Infatuation Valencia</a></strong> — honest restaurant reviews, neighbourhood by neighbourhood</li>
-        <li><strong><a href="https://www.instagram.com/vinosbodegaslabae/" target="_blank" rel="noopener">Bodegas La Bae</a></strong> — local natural wine shop, great recs for Valencia wine scene</li>
-        <li><strong><a href="https://www.timeout.com/valencia/restaurants/best-restaurants-in-ruzafa" target="_blank" rel="noopener">Time Out: Best of Ruzafa</a></strong> — curated Ruzafa food scene guide</li>
+        <li><strong><a href="https://www.lovingvalencia.com/" target="_blank" rel="noopener">Loving Valencia</a></strong> — local city guide, events and gastro</li>
+        <li><strong><a href="https://www.timeout.com/valencia/restaurants" target="_blank" rel="noopener">Time Out Valencia</a></strong> — restaurant and bar reviews</li>
       </ul>
     </div>
 
@@ -1410,6 +1563,8 @@ body {
   var flatList = document.getElementById('flatList');
   var filterBar = document.getElementById('filterBar');
   var activeFilter = 'all';
+  var activeOccasion = null;
+  var occasionPills = document.querySelectorAll('.occasion-pill');
   var nearMeActive = false;
   var userLat = null;
   var userLng = null;
@@ -1433,8 +1588,10 @@ body {
   function applyFilters() {
     venues.forEach(function(v) {
       var tags = (v.getAttribute('data-tags') || '').split(',');
-      var match = activeFilter === 'all' || tags.indexOf(activeFilter) !== -1;
-      if (match) {
+      var occasions = (v.getAttribute('data-occasion') || '').split(',');
+      var matchCategory = activeFilter === 'all' || tags.indexOf(activeFilter) !== -1;
+      var matchOccasion = !activeOccasion || occasions.indexOf(activeOccasion) !== -1;
+      if (matchCategory && matchOccasion) {
         v.classList.remove('filtered-out');
       } else {
         v.classList.add('filtered-out');
@@ -1521,19 +1678,19 @@ body {
   }
 
   function rebuildFlatList() {
-    // Collect visible venues
     var items = [];
     venues.forEach(function(v) {
       var tags = v.getAttribute('data-tags').split(',');
+      var occasions = (v.getAttribute('data-occasion') || '').split(',');
       var matchFilter = activeFilter === 'all' || tags.indexOf(activeFilter) !== -1;
-      if (matchFilter && v._distance !== undefined) {
+      var matchOccasion = !activeOccasion || occasions.indexOf(activeOccasion) !== -1;
+      if (matchFilter && matchOccasion && v._distance !== undefined) {
         items.push({ el: v, dist: v._distance });
       }
     });
 
     items.sort(function(a, b) { return a.dist - b.dist; });
 
-    // Switch to flat mode
     directory.classList.add('flat-mode');
     flatList.innerHTML = '';
 
@@ -1556,10 +1713,11 @@ body {
       if (filter === 'nearme') {
         if (nearMeActive) {
           deactivateNearMe();
-          // Re-activate "All" pill
-          pills.forEach(function(p) { p.classList.remove('active'); });
-          document.querySelector('[data-filter="all"]').classList.add('active');
-          activeFilter = 'all';
+          pills.forEach(function(p) {
+            if (p.getAttribute('data-filter') !== 'nearme') {
+              p.classList.toggle('active', p.getAttribute('data-filter') === activeFilter);
+            }
+          });
           applyFilters();
         } else {
           // Keep current category filter, just add nearme
@@ -1577,6 +1735,25 @@ body {
       });
       this.classList.add('active');
 
+      if (nearMeActive) {
+        rebuildFlatList();
+      } else {
+        applyFilters();
+      }
+    });
+  });
+
+  occasionPills.forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      var occasion = this.getAttribute('data-occasion');
+      if (activeOccasion === occasion) {
+        activeOccasion = null;
+        this.classList.remove('active');
+      } else {
+        activeOccasion = occasion;
+        occasionPills.forEach(function(p) { p.classList.remove('active'); });
+        this.classList.add('active');
+      }
       if (nearMeActive) {
         rebuildFlatList();
       } else {
@@ -1626,4 +1803,3 @@ body {
 
 </body>
 </html>
-
