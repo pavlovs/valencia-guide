@@ -461,6 +461,173 @@ body {
   border-radius: 2px;
 }
 .tab-panel { display: block; }
+
+/* TRIVIA QUIZ */
+.trivia-container { padding-top: 20px; }
+.trivia-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.trivia-score {
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.trivia-progress {
+  width: 100%;
+  height: 4px;
+  background: var(--divider);
+  border-radius: 2px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+.trivia-progress-bar {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+.trivia-card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 24px 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 14px;
+}
+.trivia-question {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.45;
+  margin-bottom: 20px;
+}
+.trivia-answers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.trivia-answer {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1.5px solid var(--divider);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+}
+.trivia-answer:active {
+  transform: scale(0.98);
+}
+.trivia-answer:hover {
+  border-color: var(--text-tertiary);
+}
+.trivia-answer.correct {
+  border-color: #4a9e6b;
+  background: #e8f5ed;
+  color: #2d6b42;
+  cursor: default;
+}
+.trivia-answer.wrong {
+  border-color: #c0392b;
+  background: #fdeaea;
+  color: #922b21;
+  cursor: default;
+}
+.trivia-answer.disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+.trivia-answer.reveal-correct {
+  border-color: #4a9e6b;
+  background: #e8f5ed;
+  color: #2d6b42;
+  opacity: 1;
+  cursor: default;
+}
+.trivia-explanation {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: rgba(181, 81, 60, 0.06);
+  border-left: 3px solid var(--accent);
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  animation: fadeIn 0.3s ease;
+}
+.trivia-next {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+}
+.trivia-next:hover { background: var(--accent-hover); }
+.trivia-next:active { transform: scale(0.98); }
+
+.trivia-results {
+  text-align: center;
+  padding: 32px 20px;
+}
+.trivia-results-score {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.trivia-results-label {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+.trivia-results-msg {
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+.trivia-play-again {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+}
+.trivia-play-again:hover { background: var(--accent-hover); }
+.trivia-play-again:active { transform: scale(0.98); }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 <body>
@@ -478,6 +645,7 @@ body {
     <button class="nav-tab active" data-panel="spots" type="button">Spots</button>
     <button class="nav-tab" data-panel="guide" type="button">Guide</button>
     <button class="nav-tab" data-panel="tips" type="button">Tips</button>
+    <button class="nav-tab" data-panel="trivia" type="button">Trivia</button>
   </nav>
 
   <!-- PANEL: SPOTS -->
@@ -1507,6 +1675,21 @@ body {
 
   </div><!-- /panel-tips -->
 
+  <!-- PANEL: TRIVIA -->
+  <div class="tab-panel" id="panel-trivia">
+    <div class="trivia-container">
+      <div class="trivia-header">
+        <div class="trivia-score" id="triviaScore">Question 1 of 12</div>
+        <div class="trivia-progress"><div class="trivia-progress-bar" id="triviaProgress"></div></div>
+      </div>
+      <div class="trivia-card" id="triviaCard">
+        <div class="trivia-question" id="triviaQuestion"></div>
+        <div class="trivia-answers" id="triviaAnswers"></div>
+        <div id="triviaFeedback"></div>
+      </div>
+    </div>
+  </div><!-- /panel-trivia -->
+
   <!-- FOOTER -->
   <footer class="footer">
     <p>Valencia &middot; May 12–17, 2026</p>
@@ -1532,7 +1715,8 @@ body {
   var panels = {
     spots: document.getElementById('panel-spots'),
     guide: document.getElementById('panel-guide'),
-    tips: document.getElementById('panel-tips')
+    tips: document.getElementById('panel-tips'),
+    trivia: document.getElementById('panel-trivia')
   };
 
   function switchPanel(panelKey) {
@@ -1554,6 +1738,7 @@ body {
   // Default: show spots, hide others
   if (panels.guide) panels.guide.style.display = 'none';
   if (panels.tips) panels.tips.style.display = 'none';
+  if (panels.trivia) panels.trivia.style.display = 'none';
 
   // -- FILTER PILLS --
   var pills = document.querySelectorAll('.pill');
@@ -1797,6 +1982,209 @@ body {
       pillsContainer.classList.toggle('scrolled-end', atEnd);
     }, {passive: true});
   }
+
+  // -- TRIVIA QUIZ --
+  var triviaQuestions = [
+    {
+      q: "What is Agua de Valencia?",
+      answers: ["Orange juice with sparkling water", "Vodka + cava + orange juice + gin", "A brand of bottled mineral water", "Orange Fanta mixed with sangria"],
+      correct: 1,
+      explanation: "Invented in 1959 at Cafe Madrid, it's Valencia's signature cocktail — cava, vodka, gin, and fresh orange juice. Dangerously drinkable and stronger than it tastes."
+    },
+    {
+      q: "What was the Turia Gardens before it became a 9km park?",
+      answers: ["A Roman aqueduct route", "An actual river, diverted after the 1957 flood", "A medieval horse racing track", "Railway lines converted in the 1980s"],
+      correct: 1,
+      explanation: "The catastrophic 1957 flood killed 81 people and devastated the city. Franco's government diverted the river south, and the old riverbed became one of Europe's largest urban parks."
+    },
+    {
+      q: "What is 'almuerzo' in Valencia?",
+      answers: ["The word for lunch, same as the rest of Spain", "A mid-morning second breakfast (around 10am)", "An afternoon snack at 5pm", "The Valencian word for dinner"],
+      correct: 1,
+      explanation: "In Valencia, almuerzo is a sacred mid-morning meal (9:30-11:30am) — usually a massive bocadillo, a beer, and sometimes cremaet (coffee with rum). It's not lunch, which happens at 2pm+."
+    },
+    {
+      q: "La Lonja de la Seda, Valencia's UNESCO World Heritage building, was originally a...",
+      answers: ["Cathedral and monastery", "Silk exchange and trading hall", "Royal palace and fortress", "University and library"],
+      correct: 1,
+      explanation: "Built 1482-1548, it's one of Europe's finest Gothic civil buildings. Valencia was a major silk trading hub, and the soaring columns inside were designed to resemble a palm grove."
+    },
+    {
+      q: "What is horchata (orxata) actually made from?",
+      answers: ["Almonds and rice milk", "Tiger nuts (chufa) grown near Valencia", "Coconut and vanilla", "Barley and cinnamon"],
+      correct: 1,
+      explanation: "Chufa (tiger nuts) are small tubers grown almost exclusively in Alboraya, just north of Valencia. The drink dates back to the 13th century Moorish period — nothing to do with nuts or dairy."
+    },
+    {
+      q: "What happens during Las Fallas every March?",
+      answers: ["Giant sculptures are paraded then burned in the streets", "A tomato-throwing festival fills the old town", "Thousands release lanterns over the Mediterranean", "Bull running through the historic center"],
+      correct: 0,
+      explanation: "Neighborhoods spend months building elaborate satirical sculptures (fallas) up to 20m tall, then burn them all on March 19 (La Crema). Only one 'ninot' is saved each year by public vote."
+    },
+    {
+      q: "Where is the Holy Grail supposedly kept?",
+      answers: ["Sagrada Familia in Barcelona", "The Prado Museum in Madrid", "Valencia Cathedral", "A monastery in Montserrat"],
+      correct: 2,
+      explanation: "The Santo Caliz in Valencia Cathedral is the Vatican's officially recognized Holy Grail candidate. It's a 1st-century Middle Eastern agate cup — and you can see it for free during mass."
+    },
+    {
+      q: "Santiago Calatrava, architect of the City of Arts and Sciences, is...",
+      answers: ["A Catalan from Barcelona", "Born and raised in Valencia", "An Italian who emigrated to Spain", "A Basque architect from Bilbao"],
+      correct: 1,
+      explanation: "Born in 1951 in Benimament (Valencia), Calatrava designed his most famous complex in his hometown. Love it or hate it, the project went 300% over budget — a controversy that still divides Valencians."
+    },
+    {
+      q: "When do most Valencians eat dinner?",
+      answers: ["7:00-8:00pm, like most Europeans", "After 9pm, often closer to 10pm", "Around 6pm, early Mediterranean style", "Midnight — after going out first"],
+      correct: 1,
+      explanation: "Spain runs on a delayed schedule, but Valencia pushes it further. Restaurants don't open for dinner before 8:30-9pm, and booking for 10pm is totally normal. Don't be the tourist eating at 7."
+    },
+    {
+      q: "True Valencian paella traditionally contains...",
+      answers: ["Seafood — prawns, mussels, and squid", "Chicken, rabbit, green beans, and snails", "Chorizo, peppers, and peas", "Whatever the chef feels like that day"],
+      correct: 1,
+      explanation: "The original paella valenciana is a land dish — chicken, rabbit, garrofon beans, green beans, and often snails. Seafood paella exists but it's a separate dish. Chorizo in paella is a war crime here."
+    },
+    {
+      q: "What is a 'casal faller'?",
+      answers: ["A traditional Valencian farmhouse", "The neighborhood social club that builds fallas", "A type of ceramic tile decoration", "The official city parade costume"],
+      correct: 1,
+      explanation: "Each neighborhood (more than 350 in Valencia) has its own casal faller — a social club that fundraises year-round, builds their falla sculpture, and throws some of the best parties in the city."
+    },
+    {
+      q: "Which language do many Valencians speak alongside Spanish?",
+      answers: ["Catalan (locally called Valencian/Valencia)", "Basque", "Galician", "Portuguese"],
+      correct: 0,
+      explanation: "Valencian (Valencia) is a variety of Catalan and co-official in the region. Don't call it 'a dialect of Catalan' to a Valencian though — that's a sensitive political topic. Street signs are bilingual."
+    }
+  ];
+
+  var triviaState = {
+    current: 0,
+    score: 0,
+    order: [],
+    answered: false
+  };
+
+  function shuffleArray(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  function startTrivia() {
+    triviaState.current = 0;
+    triviaState.score = 0;
+    triviaState.order = shuffleArray(Array.from({length: triviaQuestions.length}, function(_, i) { return i; }));
+    triviaState.answered = false;
+    renderTriviaQuestion();
+  }
+
+  function renderTriviaQuestion() {
+    var idx = triviaState.order[triviaState.current];
+    var qObj = triviaQuestions[idx];
+    var total = triviaState.order.length;
+
+    document.getElementById('triviaScore').textContent = 'Question ' + (triviaState.current + 1) + ' of ' + total;
+    document.getElementById('triviaProgress').style.width = ((triviaState.current / total) * 100) + '%';
+
+    document.getElementById('triviaQuestion').textContent = qObj.q;
+
+    var answersHtml = '';
+    for (var i = 0; i < qObj.answers.length; i++) {
+      answersHtml += '<button class="trivia-answer" data-idx="' + i + '" type="button">' + qObj.answers[i] + '</button>';
+    }
+    document.getElementById('triviaAnswers').innerHTML = answersHtml;
+    document.getElementById('triviaFeedback').innerHTML = '';
+    triviaState.answered = false;
+
+    // Attach click handlers
+    var btns = document.querySelectorAll('.trivia-answer');
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (triviaState.answered) return;
+        handleTriviaAnswer(parseInt(this.getAttribute('data-idx')));
+      });
+    });
+  }
+
+  function handleTriviaAnswer(selected) {
+    triviaState.answered = true;
+    var idx = triviaState.order[triviaState.current];
+    var qObj = triviaQuestions[idx];
+    var isCorrect = selected === qObj.correct;
+
+    if (isCorrect) triviaState.score++;
+
+    var btns = document.querySelectorAll('.trivia-answer');
+    btns.forEach(function(btn) {
+      var bIdx = parseInt(btn.getAttribute('data-idx'));
+      if (bIdx === selected && isCorrect) {
+        btn.classList.add('correct');
+      } else if (bIdx === selected && !isCorrect) {
+        btn.classList.add('wrong');
+      } else if (bIdx === qObj.correct && !isCorrect) {
+        btn.classList.add('reveal-correct');
+      } else {
+        btn.classList.add('disabled');
+      }
+    });
+
+    var feedbackHtml = '<div class="trivia-explanation">' + (isCorrect ? '<strong>Correct!</strong> ' : '<strong>Not quite.</strong> ') + qObj.explanation + '</div>';
+    var isLast = triviaState.current >= triviaState.order.length - 1;
+    feedbackHtml += '<button class="trivia-next" id="triviaNext" type="button">' + (isLast ? 'See Results' : 'Next Question') + '</button>';
+    document.getElementById('triviaFeedback').innerHTML = feedbackHtml;
+
+    document.getElementById('triviaNext').addEventListener('click', function() {
+      if (isLast) {
+        showTriviaResults();
+      } else {
+        triviaState.current++;
+        renderTriviaQuestion();
+      }
+    });
+  }
+
+  function showTriviaResults() {
+    var total = triviaState.order.length;
+    var pct = Math.round((triviaState.score / total) * 100);
+    var msg = '';
+    if (pct === 100) msg = 'Perfecto! You know Valencia better than most locals.';
+    else if (pct >= 80) msg = 'Impressive! You\'re ready for that almuerzo conversation.';
+    else if (pct >= 60) msg = 'Solid! A few more horchatas and you\'ll be an expert.';
+    else if (pct >= 40) msg = 'Not bad for a guiri. Time to explore more.';
+    else msg = 'Valencia has secrets to share with you. Go wander!';
+
+    var card = document.getElementById('triviaCard');
+    card.innerHTML = '<div class="trivia-results">' +
+      '<div class="trivia-results-score">' + triviaState.score + '/' + total + '</div>' +
+      '<div class="trivia-results-label">' + pct + '% correct</div>' +
+      '<div class="trivia-results-msg">' + msg + '</div>' +
+      '<button class="trivia-play-again" id="triviaRestart" type="button">Play Again</button>' +
+      '</div>';
+
+    document.getElementById('triviaScore').textContent = 'Results';
+    document.getElementById('triviaProgress').style.width = '100%';
+
+    document.getElementById('triviaRestart').addEventListener('click', function() {
+      card.innerHTML = '<div class="trivia-question" id="triviaQuestion"></div><div class="trivia-answers" id="triviaAnswers"></div><div id="triviaFeedback"></div>';
+      startTrivia();
+    });
+  }
+
+  // Initialize trivia when tab is first shown
+  var triviaStarted = false;
+  var origSwitchPanel = switchPanel;
+  switchPanel = function(panelKey) {
+    origSwitchPanel(panelKey);
+    if (panelKey === 'trivia' && !triviaStarted) {
+      triviaStarted = true;
+      startTrivia();
+    }
+  };
 
 })();
 </script>
